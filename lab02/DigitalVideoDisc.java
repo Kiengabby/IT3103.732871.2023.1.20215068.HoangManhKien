@@ -1,9 +1,10 @@
 public class DigitalVideoDisc {
-	private String title;
-	private String category;
-	private String directory;
-	private int lenght;
-	private float cost;
+	// các thuộc tính của lớp
+	private String title;// Tên của đĩa
+	private String category;// Thể loại của đĩa
+	private String directory;//Đạo diễn của đĩa
+	private int lenght;//Thời gian của đĩa
+	private float cost;//Giá tiền của đĩa
 	public DigitalVideoDisc(String title) {
 		super();
 		this.title = title;

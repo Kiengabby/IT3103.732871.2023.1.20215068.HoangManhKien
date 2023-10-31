@@ -1,23 +1,36 @@
-import java.util.Scanner;
+// package aims;
+import java.util.ArrayList;
 
-public class Aims {
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        Carts anOrder = new Carts();
-
-        //Create new dvd objects and add them to the cart
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-		anOrderCart.addDigitalVideoDisc(dvd1);
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "Geoge Lucas", 87, 24.95f);
-		anOrderCart.addDigitalVideoDisc(dvd2);
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 23.65f);
-		anOrderCart.addDigitalVideoDisc(dvd3);
+public class Cart {
+	public static final int MAX_NUMBERS_ORDERED = 10;
+	private float totalcost = 0;
+	ArrayList<DigitalVideoDisc> itemsOderedList = new ArrayList<DigitalVideoDisc>(MAX_NUMBERS_ORDERED);
+	public int qtyOrdered = 0;
 	
-		//In ra total cost
-		System.out.print("Total cost is: ");
-		System.out.println(anOrderCart.totalCost());
-		//In ra quantity
-		System.out.print("Dvd quantity in cart: ");
-		System.out.println(anOrderCart.qtyOrdered);
+	// Delete
+	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
+		itemsOderedList.remove(disc);
+		System.out.println("The disc " + disc.getTitle() + " has been removed");
+		qtyOrdered = itemsOderedList.size();
+	}
+	
+	// Add 
+	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
+		// If the quantity is not max
+		if(qtyOrdered < MAX_NUMBERS_ORDERED) {
+			itemsOderedList.add(disc);
+			System.out.println("The disc " + disc.getTitle() + " has been added");
+			qtyOrdered = itemsOderedList.size();
+		}
+		// If the quantity is max
+		else System.out.println("The cart is almost full");
+	}
+	
+	//Total Money
+	public float totalCost() {
+		for(int i = 0; i < itemsOderedList.size(); i++) {
+			totalcost += itemsOderedList.get(i).getCost();
+		}
+		return totalcost;
 	}
 }
